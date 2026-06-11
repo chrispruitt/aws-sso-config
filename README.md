@@ -96,7 +96,7 @@ All flags have environment variable equivalents. Set these to avoid passing flag
 | `AWS_DEFAULT_SSO_START_URL` | `--start-url` | SSO portal URL |
 | `AWS_DEFAULT_SSO_REGION` | `--sso-region` | SSO OIDC region |
 | `AWS_DEFAULT_REGION` / `AWS_REGION` | `--region` | Default region written into each profile |
-| `AWS_CONFIG_FILE` | `--config-file` | Path to the config file to write |
+| `AWS_CONFIG_FILE` | `--config-file` | Path to the config file to write (defaults to `~/.aws/config`) |
 
 ---
 
