@@ -273,6 +273,33 @@ func loadCachedToken(startURL string) (*cachedToken, error) {
 	return &tok, nil
 }
 
+// DeleteToken removes the cached SSO token for the given start URL.
+func DeleteToken(startURL string) error {
+	path, err := tokenCachePath(startURL)
+	if err != nil {
+		return err
+	}
+	return os.Remove(path)
+}
+
+// TokenExpiry returns the expiry time of the cached SSO token for the given start URL.
+func TokenExpiry(startURL string) (time.Time, error) {
+	tok, err := loadCachedToken(startURL)
+	if err != nil {
+		return time.Time{}, err
+	}
+	return tok.expiresAtTime()
+}
+
+// GetCachedToken returns the raw access token from cache without triggering re-auth.
+func GetCachedToken(startURL string) (string, error) {
+	tok, err := loadCachedToken(startURL)
+	if err != nil {
+		return "", err
+	}
+	return tok.AccessToken, nil
+}
+
 func saveToken(startURL, region, accessToken string, expiresAt time.Time) error {
 	path, err := tokenCachePath(startURL)
 	if err != nil {

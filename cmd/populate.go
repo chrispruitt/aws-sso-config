@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"os"
-	"path/filepath"
 	"strings"
 
 	"github.com/chrispruitt/aws-sso-config/internal/auth"
@@ -73,14 +72,10 @@ func runPopulate(cmd *cobra.Command, args []string) error {
 	ctx := context.Background()
 
 	if configFile == "" {
-		if env := os.Getenv("AWS_CONFIG_FILE"); env != "" {
-			configFile = env
-		} else {
-			home, err := os.UserHomeDir()
-			if err != nil {
-				return fmt.Errorf("resolving home directory: %w", err)
-			}
-			configFile = filepath.Join(home, ".aws", "config")
+		var cfgErr error
+		configFile, cfgErr = resolveConfigFile()
+		if cfgErr != nil {
+			return cfgErr
 		}
 	}
 
