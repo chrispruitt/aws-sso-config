@@ -17,10 +17,10 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/sso"
 	"github.com/aws/aws-sdk-go-v2/service/ssooidc"
 	oidctypes "github.com/aws/aws-sdk-go-v2/service/ssooidc/types"
-	"github.com/chrispruitt/aws-sso-config/internal/browser"
+	"github.com/chrispruitt/aws-sso/internal/browser"
 )
 
-const oidcClientName = "aws-sso-config"
+const oidcClientName = "aws-sso"
 
 // Profile is a single AWS named profile derived from an SSO account + role.
 type Profile struct {

@@ -1,4 +1,4 @@
-module github.com/chrispruitt/aws-sso-config
+module github.com/chrispruitt/aws-sso
 
 go 1.24
 

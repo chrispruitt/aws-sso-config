@@ -5,8 +5,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/chrispruitt/aws-sso-config/internal/auth"
-	"github.com/chrispruitt/aws-sso-config/internal/awsconfig"
+	"github.com/chrispruitt/aws-sso/internal/auth"
+	"github.com/chrispruitt/aws-sso/internal/awsconfig"
 	"github.com/spf13/cobra"
 )
 

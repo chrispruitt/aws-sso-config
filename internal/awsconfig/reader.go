@@ -46,7 +46,7 @@ func ReadProfile(configPath, profileName string) (*ProfileConfig, error) {
 			}
 		}
 		if cfg.StartURL == "" {
-			return nil, fmt.Errorf("profile %q is missing sso_start_url — run 'aws-sso-config populate' first", profileName)
+			return nil, fmt.Errorf("profile %q is missing sso_start_url — run 'aws-sso populate' first", profileName)
 		}
 		return cfg, nil
 	}

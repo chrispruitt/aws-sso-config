@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/chrispruitt/aws-sso-config/internal/auth"
-	"github.com/chrispruitt/aws-sso-config/internal/awsconfig"
+	"github.com/chrispruitt/aws-sso/internal/auth"
+	"github.com/chrispruitt/aws-sso/internal/awsconfig"
 	"github.com/spf13/cobra"
 )
 
@@ -31,7 +31,7 @@ a named profile for each one to your AWS config file.
 Profiles use the format: [profile <account-name><sep><role-name>]
 
 Example:
-  aws-sso-config populate \
+  aws-sso populate \
     --start-url https://myorg.awsapps.com/start \
     --sso-region us-east-1 \
     --region us-east-1`,

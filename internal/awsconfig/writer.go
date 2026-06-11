@@ -7,7 +7,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/chrispruitt/aws-sso-config/internal/auth"
+	"github.com/chrispruitt/aws-sso/internal/auth"
 )
 
 // FormatProfile renders a single profile as an AWS config stanza.

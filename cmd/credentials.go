@@ -8,8 +8,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	awscfg "github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/sso"
-	"github.com/chrispruitt/aws-sso-config/internal/auth"
-	"github.com/chrispruitt/aws-sso-config/internal/awsconfig"
+	"github.com/chrispruitt/aws-sso/internal/auth"
+	"github.com/chrispruitt/aws-sso/internal/awsconfig"
 	"github.com/spf13/cobra"
 )
 

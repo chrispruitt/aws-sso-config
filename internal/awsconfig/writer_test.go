@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/chrispruitt/aws-sso-config/internal/auth"
+	"github.com/chrispruitt/aws-sso/internal/auth"
 )
 
 func TestWriteProfiles_NewFile(t *testing.T) {

@@ -1,4 +1,4 @@
-# aws-sso-config
+# aws-sso
 
 A Go CLI that discovers every AWS account and role available to you via AWS SSO, writes them as named profiles to your `~/.aws/config` file, and provides shell commands for switching between profiles with tab completion.
 
@@ -27,7 +27,7 @@ Auto-populated profiles are replaced on subsequent runs. Profiles you create man
 Requires Go 1.24+.
 
 ```bash
-go install github.com/chrispruitt/aws-sso-config@latest
+go install github.com/chrispruitt/aws-sso@latest
 ```
 
 ### Build from source
@@ -35,16 +35,16 @@ go install github.com/chrispruitt/aws-sso-config@latest
 Requires Go 1.24+.
 
 ```bash
-git clone https://github.com/chrispruitt/aws-sso-config.git
-cd aws-sso-config
-go build -o aws-sso-config .
-sudo mv aws-sso-config /usr/local/bin/
+git clone https://github.com/chrispruitt/aws-sso.git
+cd aws-sso
+go build -o aws-sso .
+sudo mv aws-sso /usr/local/bin/
 ```
 
 ### Docker
 
 ```bash
-docker build -t aws-sso-config .
+docker build -t aws-sso .
 ```
 
 ---
@@ -56,7 +56,7 @@ docker build -t aws-sso-config .
 Run `populate` once (and again whenever your SSO account/role assignments change) to write all available profiles to `~/.aws/config`:
 
 ```bash
-aws-sso-config populate \
+aws-sso populate \
   --start-url https://<your-org>.awsapps.com/start \
   --sso-region us-east-1 \
   --region us-east-1
@@ -69,7 +69,7 @@ On first run (or after token expiry) a browser window opens for SSO login. If it
 Add the following line to your `~/.bashrc` or `~/.zshrc`, then restart your shell or run `source ~/.bashrc`:
 
 ```bash
-eval "$(aws-sso-config shell-init)"
+eval "$(aws-sso shell-init)"
 ```
 
 This defines the `awssso` function and its companions, plus tab completion for profile names.
@@ -119,7 +119,7 @@ awssso-logout
 Discovers all SSO accounts and roles and writes them as named profiles to your AWS config file.
 
 ```bash
-aws-sso-config populate [flags]
+aws-sso populate [flags]
 
 Flags:
   -u, --start-url string      AWS SSO start URL (env: AWS_DEFAULT_SSO_START_URL)
@@ -135,7 +135,7 @@ Flags:
 Use `--dry-run` to preview changes without writing:
 
 ```bash
-aws-sso-config populate --dry-run
+aws-sso populate --dry-run
 ```
 
 ### login / logout / refresh
@@ -144,29 +144,29 @@ These are used internally by the shell functions but can also be called directly
 
 ```bash
 # Prints: export AWS_PROFILE=... AWS_REGION=... AWS_ACCOUNT=...
-aws-sso-config login <profile>
+aws-sso login <profile>
 
 # Prints: unset AWS_PROFILE AWS_REGION AWS_ACCOUNT
-aws-sso-config logout
+aws-sso logout
 
 # Deletes cached token, re-authenticates, prints export statements
-aws-sso-config refresh
+aws-sso refresh
 ```
 
 ### credentials
 
 ```bash
 # Prints: export AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... AWS_SESSION_TOKEN=...
-aws-sso-config credentials
+aws-sso credentials
 
 # Prints: unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
-aws-sso-config credentials unset
+aws-sso credentials unset
 ```
 
 ### expiry
 
 ```bash
-aws-sso-config expiry
+aws-sso expiry
 # Profile "dev.Admin" — session expires in 6h 42m (at 2024-01-15 23:30:00)
 ```
 
@@ -174,11 +174,11 @@ aws-sso-config expiry
 
 ```bash
 # Auto-detects shell from $SHELL
-aws-sso-config shell-init
+aws-sso shell-init
 
 # Explicitly specify the shell
-aws-sso-config shell-init --shell bash
-aws-sso-config shell-init --shell zsh
+aws-sso shell-init --shell bash
+aws-sso shell-init --shell zsh
 ```
 
 ---
@@ -210,7 +210,7 @@ docker run --rm \
   -e AWS_DEFAULT_SSO_START_URL \
   -e AWS_DEFAULT_SSO_REGION \
   -e AWS_CONFIG_FILE \
-  aws-sso-config populate
+  aws-sso populate
 ```
 
 > **Note:** The Docker container cannot open a browser. On first run the URL and confirmation code are printed to stderr; visit the URL manually to complete login.

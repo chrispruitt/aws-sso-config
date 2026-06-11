@@ -18,7 +18,7 @@ var shellInitCmd = &cobra.Command{
 
 Add this line to your ~/.bashrc or ~/.zshrc:
 
-  eval "$(aws-sso-config shell-init)"`,
+  eval "$(aws-sso shell-init)"`,
 	RunE: runShellInit,
 }
 
@@ -49,27 +49,27 @@ awssso() {
     echo "Usage: awssso <profile>" >&2
     return 1
   fi
-  eval "$(aws-sso-config login "$1")"
+  eval "$(aws-sso login "$1")"
 }
 
 awssso-logout() {
-  eval "$(aws-sso-config logout)"
+  eval "$(aws-sso logout)"
 }
 
 awssso-refresh() {
-  eval "$(aws-sso-config refresh)"
+  eval "$(aws-sso refresh)"
 }
 
 awssso-export() {
-  eval "$(aws-sso-config credentials)"
+  eval "$(aws-sso credentials)"
 }
 
 awssso-unset() {
-  eval "$(aws-sso-config credentials unset)"
+  eval "$(aws-sso credentials unset)"
 }
 
 awssso-expiry() {
-  aws-sso-config expiry
+  aws-sso expiry
 }
 
 _awssso_completions() {
@@ -89,27 +89,27 @@ awssso() {
     echo "Usage: awssso <profile>" >&2
     return 1
   fi
-  eval "$(aws-sso-config login "$1")"
+  eval "$(aws-sso login "$1")"
 }
 
 awssso-logout() {
-  eval "$(aws-sso-config logout)"
+  eval "$(aws-sso logout)"
 }
 
 awssso-refresh() {
-  eval "$(aws-sso-config refresh)"
+  eval "$(aws-sso refresh)"
 }
 
 awssso-export() {
-  eval "$(aws-sso-config credentials)"
+  eval "$(aws-sso credentials)"
 }
 
 awssso-unset() {
-  eval "$(aws-sso-config credentials unset)"
+  eval "$(aws-sso credentials unset)"
 }
 
 awssso-expiry() {
-  aws-sso-config expiry
+  aws-sso expiry
 }
 
 _awssso() {
